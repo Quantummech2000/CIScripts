@@ -1,5 +1,5 @@
 language: generic
-
+jobs:
 sudo: required
 
 addons:
