@@ -1,0 +1,6 @@
+language: generic
+
+sudo: required
+
+after_success: |
+  bash rom.sh
