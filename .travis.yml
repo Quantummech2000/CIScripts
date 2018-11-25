@@ -1,0 +1,19 @@
+language: generic
+
+sudo: required
+
+addons:
+  apt:
+    packages:
+      - libcurl4-openssl-dev
+      - libelf-dev
+      - libdw-dev
+      - cmake
+      - git-core
+
+after_success: |
+  mkdir ~/bin &&
+  PATH=~/bin:$PATH &&
+  curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo &&
+  chmod a+x ~/bin/repo &&
+  bash rom.sh
