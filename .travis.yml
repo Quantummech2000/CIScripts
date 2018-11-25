@@ -13,6 +13,7 @@ addons:
 
 after_success: |
   PATH=~/bin:$PATH &&
+  git config --global color.ui false &&
   curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo &&
   chmod a+x ~/bin/repo &&
   bash rom.sh
