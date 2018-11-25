@@ -2,5 +2,15 @@ language: generic
 
 sudo: required
 
+addons:
+  apt:
+    packages:
+      - git-core
+      - gnupg
+      - flex
+      - bison
+      - gperf
+      - build-essential
+
 after_success: |
   bash rom.sh
