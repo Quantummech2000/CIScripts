@@ -18,7 +18,6 @@ cd rom
 git config —global user.name "Quantummech2000"
 git config —global user.email "vvr-rockstar@bmsit.in"
 repo init -u https://github.com/LLuviaOS/android_manifest -b 3.0 --depth=1 
-printf 'y'
 repo sync -c -f --force-sync --no-tags --no-clone-bundle -j$(nproc --all)  >log 2>&1
 git clone https://github.com/quantummech2000/android_device_xiaomi_santoni -b lluvia-pie device/xiaomi/santoni
 git clone https://github.com/quantummech2000/android_vendor_xiaomi_santoni -b lluvia-pie vendor/xiaomi
@@ -30,7 +29,10 @@ export USE_CCACHE=1
 prebuilts/misc/linux-x86/ccache/ccache -M 50G
 export CCACHE_COMPRESS=1
 brunch santoni
-
+export IMAGE = "out/target/product/santoni/LLuviaOS-Beta-v2.0-Crystal-santoni-MANMADE-$(shell date -u +%Y%m%d).zip"
+export OUT = "out/target/product/santoni"
+export zipname = "LLuviaOS-Beta-v2.0-Crystal-santoni-MANMADE-$(shell date -u +%Y%m%d).zip"
+export ${ROM} = ${ZIP};
 if [[ ! -f "${IMAGE}" ]]; then
     echo -e "Build failed :P";
     curl -s -X POST https://api.telegram.org/bot$BOT_API_KEY/sendMessage -d text="CI build for LLUVIA ROM stopped due to an error" -d chat_id=$CHAT_ID
@@ -43,6 +45,8 @@ else
 fi
 function transfer() {
 	zipname="${ROM}";
+	cd ${OUT};
+	
 	url="$(curl -# -T ${ROM} https://transfer.sh)";
 	printf '\n';
 	echo -e "Download ${zipname} at ${url} ";
@@ -50,4 +54,4 @@ function transfer() {
 }
 if [[ ${success} == true ]]; then
     echo -e "Uploading ${ZIPNAME} to https://transfer.sh/";
-    transfer "${FINAL_ZIP}";
+    transfer "${ROM}";
