@@ -1,18 +1,13 @@
 version: 2
 jobs:
-  build:
-    working_directory: ~/code
-    docker:
-      - image: circleci/android:api-28-alpha
-    steps:
-      - checkout
-      - run: 
-          command : |
-            sudo apt-get update && sudo apt-get upgrade
+  test:
+  override:
+    - chmod 775 Builder
+    - ./Builder
             
   
 workflows:
   version: 2
   build_and_test:
     jobs:
-      - build
+      - test
