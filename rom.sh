@@ -17,9 +17,9 @@ mkdir rom
 cd rom
 git config —global user.name "Quantummech2000"
 git config —global user.email "vvr-rockstar@bmsit.in"
-repo init -u https://github.com/LLuvia-OS/android_manifest -b 3.0 --depth=1 
+repo init -u https://github.com/LLuviaOS/android_manifest -b 3.0 --depth=1 
 printf 'y'
-repo sync -c -f --force-sync --no-tags --no-clone-bundle -j$(nproc --all)
+repo sync -c -f --force-sync --no-tags --no-clone-bundle -j$(nproc --all)  >log 2>&1
 git clone https://github.com/quantummech2000/android_device_xiaomi_santoni -b lluvia-pie device/xiaomi/santoni
 git clone https://github.com/quantummech2000/android_vendor_xiaomi_santoni -b lluvia-pie vendor/xiaomi
 git clone https://github.com/quantummech2000/jaguarkernel.git -b version2.0_treble kernel/xiaomi/msm8937
