@@ -3,8 +3,7 @@
 export TZ="Asia/Kolkata";
 export WKDIR="${HOME}/rom"
 export ROM="${WKDIR}/out/target/product/santoni/LLuvia* "
-
-
+git config --global color.ui false
 git clone https://github.com/akhilnarang/scripts
 cd scripts
 bash setup/a*b*e*.sh
